@@ -1,33 +1,50 @@
-// Inserimento funzione di calcolo del prezzo del biglietto
-function calcolaPrezzo() {
-    // Dichiarazione e recupero degli elementi dal DOM
-    const kmInput = document.getElementById("km");
-    const etaInput = document.getElementById("eta");
-    const risultatoOutput = document.getElementById("risultato");
+document.getElementById("genera").addEventListener("click", function(){
+    // Recuper dei valori del form
+    const nome = document.getElementById("nome").value;
+    const km = parseFloat(document.getElementById("km").value);
+    const fasciaEta = document.getElementById("fasciaEta").value;
 
-    // Recupero dei valori inseriti dall'utente
-    const km = parseFloat(kmInput.value);
-    const eta = parseInt(etaInput.value);
-
-    // Prezzo base per km
+    // Costante prezzo base per km
     const prezzoKm = 0.21;
     let prezzoFinale = km * prezzoKm;
+    let offerta = "Biglietto Standard";
 
     // Applicazione degli sconti
-    if (eta < 18) {
+    if (fasciaEta === "minorenne") {
         prezzoFinale *= 0.8;
+        offerta = "Sconto Minorenni";
     }
-
-    else if (eta > 65){
+    else if (fasciaEta === "over65") {
         prezzoFinale *= 0.6;
+        offerta = "Sconto Over 65";
     }
 
-    // Sistemazione prezzo con 2 decimali
+    // Formattazzione del prezzo con due decimali
     prezzoFinale = prezzoFinale.toFixed(2);
 
-    // Mostriamo il risultato nella pagina
-    risultatoOutput.innerText = `Prezzo del biglietto: € ${prezzoFinale}`;
-}
+    // Generazione dati casuali per carrozza e codice CP
+    const carrozza = Math.floor(Math.random() * 10) +1;
+    const codiceCp = Math.floor(Math.random() * 90000) + 10000;
+
+    // aggiornamento della sezione biglietto
+    document.getElementById("nomePasseggero").innerText = nome;
+    document.getElementById("offerta").innerText = offerta;
+    document.getElementById("carrozza").innerText = carrozza;
+    document.getElementById("codiceCp").innerText = codiceCp;
+    document.getElementById("costoBiglietto").innerText = prezzoFinale;
+});
+
+// Funzione per azzerare il form
+document.getElementById("annulla").addEventListener("click", function(){
+    document.getElementById("nome").value = "";
+    document.getElementById("km").value = "";
+    document.getElementById("fasciaEta").value = "standard";
+    document.getElementById("nomePasseggero").value = "";
+    document.getElementById("offerta").value = "";
+    document.getElementById("carrozza").value = "";
+    document.getElementById("codiceCp").value = "";
+    document.getElementById("costoBiglietto").value = "";
+})
 
 
 
