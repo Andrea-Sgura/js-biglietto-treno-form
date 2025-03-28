@@ -3,30 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
     <title>Document</title>
 </head>
-<body>
-    <main>
-        <h1>Calcola il prezzo del tuo biglietto</h1>
-        <div>
-            <label for="nome">Nome e Cognome:</label>
-            <input type="text" id="nome" placeholder="Inserisci il tuo nome">
-
-            <label for="km">Km da percorrere:</label>
-            <input type="number" id="km" min="1">
-
-            <label for="fasciaEta">Fascia d'età:</label>
-            <select id="fasciaEta">
-                <option value="standard">Maggiorenne</option>
-                <option value="minorenne">Minorenne</option>
-                <option value="over65">Over 65</option>
-            </select>
-
-            <button id="genera">Genera</button>
-            <button id="annulla">Annulla</button>
+<body class="bg-light">
+    <main class="container mt-5">
+        <h1 class="text-center mb-4">Calcola il prezzo del tuo biglietto</h1>
+        <div class="row">
+            <!-- Sezione Form -->
+             <div class="col-md-6">
+                <form id="ticketForm">
+                    <div class="form-group">
+                        <label for="nome">Nome e Cognome:</label>
+                        <input type="text" id="nome" placeholder="Inserisci il tuo nome"> 
+                    </div>
+                    <div class="form-group">
+                        <label for="km">Km da percorrere:</label>
+                        <input type="number" id="km" min="1"> 
+                    </div>
+                    <div class="form-group">
+                        <label for="fasciaEta">Fascia d'età:</label>
+                        <select id="fasciaEta">
+                            <option value="standard">Maggiorenne</option>
+                            <option value="minorenne">Minorenne</option>
+                            <option value="over65">Over 65</option>
+                        </select>
+                    </div>
+                    <button id="genera">Genera</button>
+                    <button id="annulla">Annulla</button>
+                </form>
+            </div>
         </div>
-
         <h2>
             Il tuo biglietto
         </h2>
